@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trattoria Arcari — Ristoratori in Colorno dal 1976</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F5F0E8;--warm-white:#FAF7F2;--terracotta:#C4622D;--terracotta-dark:#A04E22;--brown:#3D2B1A;--brown-light:#6B4C35;--gold:#B8960C;--gold-light:#D4AE2A;--text:#2A1A0E;--text-light:#6B5844;--border:rgba(61,43,26,0.12);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--warm-white);color:var(--text);overflow-x:hidden;}
+nav{position:fixed;top:0;width:100%;z-index:100;padding:20px 40px;display:flex;justify-content:space-between;align-items:center;background:rgba(250,247,242,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;color:var(--brown);}
+.nav-logo span{color:var(--terracotta);font-style:italic;}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-light);text-decoration:none;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--terracotta);}
+.nav-cta{background:var(--terracotta);color:white;padding:10px 24px;border-radius:2px;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;font-weight:500;transition:background 0.2s;}
+.nav-cta:hover{background:var(--terracotta-dark);}
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:80px;}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 60px 80px 80px;position:relative;}
+.hero-left::before{content:'';position:absolute;top:0;right:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--border) 20%,var(--border) 80%,transparent);}
+.hero-tag{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--terracotta);font-weight:500;margin-bottom:24px;display:flex;align-items:center;gap:12px;}
+.hero-tag::before{content:'';width:30px;height:1px;background:var(--terracotta);}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,5vw,4.5rem);line-height:1.08;font-weight:900;color:var(--brown);margin-bottom:8px;}
+.hero-title em{font-style:italic;color:var(--terracotta);display:block;}
+.hero-year{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text-light);font-style:italic;margin-bottom:32px;}
+.hero-desc{font-family:'Cormorant Garamond',serif;font-size:1.2rem;line-height:1.7;color:var(--text-light);max-width:420px;margin-bottom:48px;font-weight:300;}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
+.btn-primary{background:var(--terracotta);color:white;padding:16px 36px;border-radius:2px;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;font-weight:500;transition:all 0.2s;}
+.btn-primary:hover{background:var(--terracotta-dark);transform:translateY(-1px);}
+.btn-secondary{border:1px solid var(--brown);color:var(--brown);padding:16px 36px;border-radius:2px;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;font-weight:500;transition:all 0.2s;}
+.btn-secondary:hover{background:var(--brown);color:white;}
+.hero-right{position:relative;overflow:hidden;background:var(--brown);}
+.hero-img{width:100%;height:100%;background:linear-gradient(135deg,#3D2B1A 0%,#6B4C35 40%,#C4622D 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:60px;position:relative;}
+.hero-badge{position:absolute;top:40px;right:40px;width:100px;height:100px;border:1px solid rgba(255,255,255,0.3);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+.hero-badge-year{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:white;line-height:1;}
+.hero-badge-text{font-size:0.55rem;letter-spacing:0.15em;color:rgba(255,255,255,0.6);text-transform:uppercase;margin-top:4px;}
+.hero-quote{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:white;font-style:italic;line-height:1.5;max-width:300px;}
+.hero-quote-attr{font-size:0.7rem;color:rgba(255,255,255,0.5);letter-spacing:0.1em;text-transform:uppercase;margin-top:12px;}
+.stats-bar{background:var(--brown);padding:24px 80px;display:flex;justify-content:space-around;align-items:center;}
+.stat{text-align:center;}
+.stat-number{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:#D4AE2A;}
+.stat-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:4px;}
+.stat-divider{width:1px;height:40px;background:rgba(255,255,255,0.1);}
+.section-header{text-align:center;margin-bottom:64px;}
+.section-tag{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--terracotta);font-weight:500;margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:16px;}
+.section-tag::before,.section-tag::after{content:'';flex:1;max-width:60px;height:1px;background:var(--terracotta);}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;color:var(--brown);line-height:1.1;}
+.section-title em{font-style:italic;color:var(--terracotta);}
+.menu-section{padding:100px 80px;background:var(--cream);}
+.menu-categories{display:flex;gap:8px;justify-content:center;margin-bottom:48px;flex-wrap:wrap;}
+.menu-cat-btn{padding:8px 24px;border-radius:2px;cursor:pointer;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--border);background:transparent;color:var(--text-light);font-family:'Jost',sans-serif;transition:all 0.2s;}
+.menu-cat-btn.active,.menu-cat-btn:hover{background:var(--terracotta);color:white;border-color:var(--terracotta);}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px;}
+.menu-item{background:white;padding:28px 32px;border-bottom:1px solid var(--border);display:none;}
+.menu-item.visible{display:block;}
+.menu-item:hover{background:var(--warm-white);}
+.menu-item-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;}
+.menu-item-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--brown);}
+.menu-item-price{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--terracotta);font-weight:500;}
+.menu-item-desc{font-family:'Cormorant Garamond',serif;font-size:0.9rem;color:var(--text-light);font-style:italic;line-height:1.5;}
+.menu-item-tag{display:inline-block;margin-top:10px;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;background:var(--cream);color:var(--gold);padding:3px 8px;border-radius:1px;}
+.booking-section{padding:100px 80px;background:var(--brown);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.booking-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:900;color:white;line-height:1.1;margin-bottom:20px;}
+.booking-title em{font-style:italic;color:#D4AE2A;}
+.booking-desc{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:rgba(255,255,255,0.65);line-height:1.7;font-style:italic;margin-bottom:40px;}
+.booking-options{display:flex;flex-direction:column;gap:16px;}
+.booking-option{display:flex;align-items:center;gap:20px;padding:20px 24px;border:1px solid rgba(255,255,255,0.1);border-radius:2px;text-decoration:none;color:white;transition:all 0.2s;background:rgba(255,255,255,0.03);}
+.booking-option:hover{background:rgba(255,255,255,0.08);}
+.booking-option-icon{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.booking-option-icon.wa{background:#25D366;}
+.booking-option-icon.tel{background:var(--terracotta);}
+.booking-option-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:4px;}
+.booking-option-value{font-size:0.95rem;font-weight:500;}
+.booking-right{display:flex;flex-direction:column;align-items:center;gap:24px;}
+.form-card{background:white;padding:32px;border-radius:4px;width:100%;max-width:360px;}
+.form-card h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--brown);margin-bottom:20px;text-align:center;}
+.form-field{margin-bottom:16px;}
+.form-field label{display:block;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-light);margin-bottom:6px;}
+.form-field input,.form-field select{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:2px;font-family:'Jost',sans-serif;font-size:0.88rem;color:var(--text);outline:none;transition:border-color 0.2s;}
+.form-field input:focus,.form-field select:focus{border-color:var(--terracotta);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.form-submit{width:100%;padding:14px;background:var(--terracotta);color:white;border:none;border-radius:2px;font-family:'Jost',sans-serif;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;cursor:pointer;margin-top:8px;transition:background 0.2s;}
+.form-submit:hover{background:var(--terracotta-dark);}
+.success-msg{display:none;text-align:center;padding:20px;background:rgba(76,175,80,0.1);border:1px solid rgba(76,175,80,0.3);border-radius:2px;color:#2E7D32;font-size:0.88rem;margin-top:12px;}
+.info-section{padding:100px 80px;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+.info-card{padding:48px 40px;background:white;}
+.info-card:nth-child(2){background:var(--terracotta);}
+.info-card:nth-child(2) *{color:white!important;}
+.info-card:nth-child(2) .info-divider{background:rgba(255,255,255,0.3)!important;}
+.info-icon{font-size:1.8rem;margin-bottom:24px;}
+.info-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--brown);margin-bottom:20px;}
+.info-divider{width:40px;height:2px;background:var(--terracotta);margin-bottom:20px;}
+.info-text{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text-light);line-height:1.8;font-style:italic;}
+.recensioni-section{padding:80px 80px;background:var(--cream);}
+.rec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2px;margin-top:48px;}
+.rec-card{background:white;padding:32px;}
+.stars{color:#B8960C;font-size:0.9rem;margin-bottom:16px;}
+.rec-text{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);line-height:1.7;font-style:italic;margin-bottom:20px;}
+.rec-author{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-light);}
+.rec-source{color:var(--terracotta);}
+footer{background:var(--text);padding:60px 80px 40px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:white;margin-bottom:16px;}
+.footer-logo span{color:var(--terracotta);font-style:italic;}
+.footer-tagline{font-family:'Cormorant Garamond',serif;font-size:0.95rem;color:rgba(255,255,255,0.4);font-style:italic;line-height:1.6;}
+.footer-col-title{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:20px;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.footer-links a{font-size:0.85rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:white;}
+.footer-bottom{grid-column:1/-1;border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;margin-top:20px;display:flex;justify-content:space-between;}
+.footer-copy{font-size:0.72rem;color:rgba(255,255,255,0.25);}
+.floating-wa{position:fixed;bottom:32px;right:32px;z-index:999;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);text-decoration:none;font-size:1.5rem;transition:all 0.2s;animation:pulse 3s infinite;}
+.floating-wa:hover{transform:scale(1.1);}
+@keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.4);}50%{box-shadow:0 4px 32px rgba(37,211,102,0.7);}}
+@media(max-width:900px){nav{padding:16px 24px;}.nav-links{display:none;}.hero{grid-template-columns:1fr;}.hero-left{padding:60px 32px 40px;}.hero-right{height:280px;}.stats-bar{padding:20px 24px;}.menu-section,.info-section,.booking-section,.recensioni-section{padding:60px 24px;}.booking-section{grid-template-columns:1fr;gap:40px;}.info-section{grid-template-columns:1fr;}footer{grid-template-columns:1fr;padding:40px 24px;}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">Trattoria <span>Arcari</span></div>
+  <ul class="nav-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#prenota">Prenota</a></li>
+    <li><a href="#info">Info</a></li>
+  </ul>
+  <a href="https://wa.me/390521815439?text=Ciao!%20Vorrei%20prenotare%20un%20tavolo%20da%20Trattoria%20Arcari." class="nav-cta" target="_blank">Prenota Ora</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">6/8 Colorno PR</div>
+    <h1 class="hero-title">Cucina Parmigiana<em>autentica</em></h1>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text-light);font-style:italic;margin-bottom:32px;">Dal 1976, gestito con passione</p>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;line-height:1.7;color:var(--text-light);max-width:420px;margin-bottom:48px;font-weight:300;">Ristoratori in Colorno dal 1976. Una cucina vera, con ingredienti del territorio e ricette tramandate di generazione in generazione.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/390521815439?text=Ciao!%20Vorrei%20prenotare%20un%20tavolo%20da%20Trattoria%20Arcari." class="btn-primary" target="_blank">📅 Prenota un Tavolo</a>
+      <a href="#menu" class="btn-secondary">Scopri il Menu</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img">
+      <div class="hero-badge">
+        <div class="hero-badge-year">1976</div>
+        <div class="hero-badge-text">Dal</div>
+      </div>
+      <blockquote class="hero-quote">"Bè, parlare di Colorno senza nominare questa storica trattoria a gestione famili..."</blockquote>
+      <p class="hero-quote-attr">— I nostri ospiti</p>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-number">50+</div><div class="stat-label">Anni di storia</div></div>
+  <div class="stat-divider"></div>
+  <div class="stat"><div class="stat-number">519+</div><div class="stat-label">Recensioni</div></div>
+  <div class="stat-divider"></div>
+  <div class="stat"><div class="stat-number">80</div><div class="stat-label">Posti a sedere</div></div>
+  <div class="stat-divider"></div>
+  <div class="stat"><div class="stat-number">4,2★</div><div class="stat-label">Valutazione</div></div>
+</div>
+
+<section class="menu-section" id="menu">
+  <div class="section-header">
+    <div class="section-tag">Cucina Parmigiana</div>
+    <h2 class="section-title">Il nostro <em>Menu</em></h2>
+  </div>
+  <div class="menu-categories">
+    <button class="menu-cat-btn active" onclick="filterMenu(event,'tutti')">Tutti</button>
+    <button class="menu-cat-btn" onclick="filterMenu(event,'antipasti')">Antipasti</button>
+    <button class="menu-cat-btn" onclick="filterMenu(event,'primi')">Primi</button>
+    <button class="menu-cat-btn" onclick="filterMenu(event,'secondi')">Secondi</button>
+    <button class="menu-cat-btn" onclick="filterMenu(event,'dolci')">Dolci</button>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-item visible" data-cat="antipasti">
+      <div class="menu-item-header">
+        <span class="menu-item-name">Tagliatelle al Culatello €10</span>
+        <span class="menu-item-price">€12</span>
+      </div>
+      <p class="menu-item-desc">Un piatto della tradizione locale.</p>
+      <span class="menu-item-tag">⭐ Specialità della casa</span>
+    </div>
+  
+    <div class="menu-item visible" data-cat="primi">
+      <div class="menu-item-header">
+        <span class="menu-item-name">Arrosti Misti alle Erbe con Patate €12</span>
+        <span class="menu-item-price">€12</span>
+      </div>
+      <p class="menu-item-desc">Un piatto della tradizione locale.</p>
+      <span class="menu-item-tag">⭐ Specialità della casa</span>
+    </div>
+  
+    <div class="menu-item visible" data-cat="secondi">
+      <div class="menu-item-header">
+        <span class="menu-item-name">Faraona Disossata Ripiena €12</span>
+        <span class="menu-item-price">€12</span>
+      </div>
+      <p class="menu-item-desc">Un piatto della tradizione locale.</p>
+      
+    </div>
+  
+    <div class="menu-item visible" data-cat="antipasti">
+      <div class="menu-item-header">
+        <span class="menu-item-name">Delizie di Parma</span>
+        <span class="menu-item-price">€12</span>
+      </div>
+      <p class="menu-item-desc">Culatello di Zibello, Coppe di Parma, Prosciutto crudo di Langhirano, Salame di Felino, Pancetta nostrana €12</p>
+      
+    </div>
+  
+    <div class="menu-item visible" data-cat="primi">
+      <div class="menu-item-header">
+        <span class="menu-item-name">Tris della Duchessa</span>
+        <span class="menu-item-price">€12</span>
+      </div>
+      <p class="menu-item-desc">Tortelli di Erbetta al Burro Versato, Cappellacci di Zucca, Quadroni al Gorgonzola e Radicchio €18</p>
+      
+    </div>
+  
+    <div class="menu-item visible" data-cat="dolci">
+      <div class="menu-item-header">
+        <span class="menu-item-name">Dolce</span>
+        <span class="menu-item-price">€12</span>
+      </div>
+      <p class="menu-item-desc">Dessert della Casa €4</p>
+      
+    </div>
+  </div>
+</section>
+
+<section class="booking-section" id="prenota">
+  <div class="booking-left">
+    <div class="booking-title">Prenota il tuo<br><em>tavolo</em></div>
+    <p class="booking-desc">Che sia un pranzo in famiglia o una cena speciale — siamo qui per accoglierti. Contattaci direttamente.</p>
+    <div class="booking-options">
+      <a href="https://wa.me/390521815439?text=Ciao!%20Vorrei%20prenotare%20un%20tavolo%20da%20Trattoria%20Arcari." class="booking-option" target="_blank">
+        <div class="booking-option-icon wa">💬</div>
+        <div><div class="booking-option-label">WhatsApp</div><div class="booking-option-value">Risposta immediata</div></div>
+        <span style="margin-left:auto;color:rgba(255,255,255,0.3);">→</span>
+      </a>
+      <a href="tel:0521815439" class="booking-option">
+        <div class="booking-option-icon tel">📞</div>
+        <div><div class="booking-option-label">Telefono</div><div class="booking-option-value">0521 815439</div></div>
+        <span style="margin-left:auto;color:rgba(255,255,255,0.3);">→</span>
+      </a>
+    </div>
+  </div>
+  <div class="booking-right">
+    <div class="form-card">
+      <h3>Richiedi una Prenotazione</h3>
+      <div class="form-field"><label>Il tuo nome</label><input type="text" placeholder="Mario Rossi" id="f-nome"/></div>
+      <div class="form-row">
+        <div class="form-field"><label>Data</label><input type="date" id="f-data"/></div>
+        <div class="form-field"><label>Ora</label><select id="f-ora"><option>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option><option>19:30</option><option>20:00</option><option>20:30</option><option>21:00</option></select></div>
+      </div>
+      <div class="form-field"><label>Numero persone</label><select id="f-persone"><option>1</option><option>2</option><option selected>3-4</option><option>5-6</option><option>7-10</option><option>10+</option></select></div>
+      <div class="form-field"><label>Telefono</label><input type="tel" placeholder="Il tuo numero" id="f-tel"/></div>
+      <button class="form-submit" onclick="submitForm()">Invia Richiesta →</button>
+      <div class="success-msg" id="success-msg">✅ Richiesta inviata! Ti contatteremo presto per confermare.</div>
+    </div>
+  </div>
+</section>
+
+<section class="recensioni-section">
+  <div class="section-header">
+    <div class="section-tag">Cosa dicono di noi</div>
+    <h2 class="section-title">Le voci dei <em>nostri ospiti</em></h2>
+  </div>
+  <div class="rec-grid">
+    <div class="rec-card">
+      <div class="stars">★★★★★</div>
+      <p class="rec-text">"Bè, parlare di Colorno senza nominare questa storica trattoria a gestione familiare, non ha senso. D'obbligo la prenotazione per i pranzi del weekend, gentilezza, onestà e bontà dei piatti, fanno da padrone. Pochi posti a sedere, ben serviti ed apparecchiati, per chi crede, ancora, che la ristorazione vada fatta con il cuore. Chiuso alla sera. In Ottobre, i tortelli dolci sono da provare ma, quelli arancioni, imbarazzanti per sublime sapore."</p>
+      <div class="rec-author">Stefano Ferioli · <span class="rec-source">Google</span></div>
+    </div>
+    <div class="rec-card">
+      <div class="stars">★★★★★</div>
+      <p class="rec-text">"Un posto autentico dove si mangia davvero bene. Personale gentile e prezzi onesti. Lo consiglio a tutti!"</p>
+      <div class="rec-author">Un cliente soddisfatto · <span class="rec-source">Google</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="info-section" id="info">
+  <div class="info-card">
+    <div class="info-icon">🕐</div>
+    <h3 class="info-title">Orari di Apertura</h3>
+    <div class="info-divider"></div>
+    <div class="info-text"><strong>Lunedì– Domenica</strong><br>Pranzo: 11:30 – 15:30<br>Cena: 19:30 – 22:30<br><br><em>Chiuso: Lunedì</em></div>
+  </div>
+  <div class="info-card">
+    <div class="info-icon" style="color:white">📍</div>
+    <h3 class="info-title">Come Raggiungerci</h3>
+    <div class="info-divider"></div>
+    <div class="info-text">Via Pier Luigi Belloni, 6/8 Colorno PR<br><br><a href="https://maps.google.com/?q=Trattoria%20Arcari%20Via%20Pier%20Luigi%20Belloni%2C%206%2F8%20Colorno%20PR" target="_blank" style="color:white;font-weight:600;">📍 Apri su Google Maps →</a></div>
+  </div>
+  <div class="info-card">
+    <div class="info-icon">📞</div>
+    <h3 class="info-title">Contatti</h3>
+    <div class="info-divider"></div>
+    <div class="info-text">
+      <strong>Telefono:</strong><br><a href="tel:0521815439" style="color:var(--terracotta);font-weight:600;">0521 815439</a><br><br>
+      <strong>Email:</strong><br><a href="mailto:info@trattoriaarcari.it" style="color:var(--terracotta);">info@trattoriaarcari.it</a><br><br>
+      <strong>WhatsApp:</strong><br><a href="https://wa.me/390521815439?text=Ciao!%20Vorrei%20prenotare%20un%20tavolo%20da%20Trattoria%20Arcari." target="_blank" style="color:#25D366;font-weight:600;">Scrivici ora →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-logo">Trattoria <span>Arcari</span></div>
+    <p class="footer-tagline">Ristoratori in Colorno dal 1976.<br>Dal 1976.</p>
+  </div>
+  <div>
+    <div class="footer-col-title">Menu</div>
+    <ul class="footer-links">
+      <li><a href="#menu">Antipasti</a></li>
+      <li><a href="#menu">Primi Piatti</a></li>
+      <li><a href="#menu">Secondi</a></li>
+      <li><a href="#menu">Dolci</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Info</div>
+    <ul class="footer-links">
+      <li><a href="#prenota">Prenota</a></li>
+      <li><a href="#info">Orari</a></li>
+      <li><a href="#info">Dove siamo</a></li>
+      <li><a href="https://wa.me/390521815439?text=Ciao!%20Vorrei%20prenotare%20un%20tavolo%20da%20Trattoria%20Arcari." target="_blank">WhatsApp</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Trattoria Arcari · Via Pier Luigi Belloni, 6/8 Colorno PR</span>
+  </div>
+</footer>
+
+<a href="https://wa.me/390521815439?text=Ciao!%20Vorrei%20prenotare%20un%20tavolo%20da%20Trattoria%20Arcari." class="floating-wa" target="_blank">💬</a>
+
+<script>
+function filterMenu(e,cat){
+  document.querySelectorAll('.menu-cat-btn').forEach(b=>b.classList.remove('active'));
+  e.target.classList.add('active');
+  document.querySelectorAll('.menu-item').forEach(item=>{
+    if(cat==='tutti'||item.dataset.cat===cat){item.classList.add('visible');}
+    else{item.classList.remove('visible');}
+  });
+}
+function submitForm(){
+  const nome=document.getElementById('f-nome').value;
+  const data=document.getElementById('f-data').value;
+  const ora=document.getElementById('f-ora').value;
+  const persone=document.getElementById('f-persone').value;
+  const tel=document.getElementById('f-tel').value;
+  if(!nome||!data||!tel){alert('Compila nome, data e telefono!');return;}
+  document.getElementById('success-msg').style.display='block';
+  setTimeout(()=>{document.getElementById('success-msg').style.display='none';},4000);
+}
+</script>
+</body>
+</html>
